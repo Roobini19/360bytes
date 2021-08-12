@@ -65,7 +65,7 @@ class LoanController extends Controller
 
                 return response()->json(['message' => 'Due Paid!', 'getloandues' => $getBalanaceDues]);
             } else {
-                return response()->json(['message' => 'Your amount is not suffient to paid due.']);
+                return response()->json(['message' => 'Your amount is not suffient / too high to paid due.']);
             }
         } else {
             return response()->json(['message' => 'Loan Due not Exist!'], 500);

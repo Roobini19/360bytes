@@ -34,9 +34,13 @@ class AdminController extends Controller
     }
 
     public function profile() {
-        $user = Admin::where('id', Auth::guard('admin')->user()->id)->first();
+        if(Auth::guard('admin')->user() != null) {
+            $user = Admin::where('id', Auth::guard('admin')->user()->id)->first();
 
-        return response()->json($user);
+            return response()->json($user);
+        } else {
+            return response()->json(['message' => 'Token Expired.Please login again!']);
+        }      
     }
 
     public function loanList() {
